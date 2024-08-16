@@ -1,0 +1,31 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="gmtk2024"
+config/features=PackedStringArray("4.2", "GL Compatibility")
+boot_splash/bg_color=Color(0.25098, 0, 0.25098, 1)
+boot_splash/image="res://images/lotusprotocol.png"
+config/icon="res://icon.svg"
+
+[file_customization]
+
+folder_colors={
+"res://audio/": "orange",
+"res://images/": "yellow",
+"res://scenes/": "green",
+"res://scripts/": "teal"
+}
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
