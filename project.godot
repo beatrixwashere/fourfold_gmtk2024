@@ -11,10 +11,22 @@ config_version=5
 [application]
 
 config/name="gmtk2024"
-config/features=PackedStringArray("4.2", "GL Compatibility")
-boot_splash/bg_color=Color(0.25098, 0, 0.25098, 1)
+run/main_scene="res://scenes/menu.tscn"
+config/features=PackedStringArray("4.3", "GL Compatibility")
+run/max_fps=60
+boot_splash/bg_color=Color(0.12549, 0, 0.12549, 1)
 boot_splash/image="res://images/lotusprotocol.png"
 config/icon="res://icon.svg"
+boot_splash/minimum_display_time=1000
+
+[display]
+
+window/size/viewport_width=480
+window/size/viewport_height=270
+window/size/window_width_override=960
+window/size/window_height_override=540
+window/stretch/mode="viewport"
+window/stretch/aspect="keep_width"
 
 [file_customization]
 
