@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://fvxapc2fmwyp"]
+
+[ext_resource type="Script" path="res://scripts/special/special_growthpotion.gd" id="1_vfrrn"]
+[ext_resource type="Texture2D" uid="uid://c3jm3ph7u35y7" path="res://images/special/growthpotion.png" id="1_x4280"]
+[ext_resource type="AudioStream" uid="uid://p6u1invoc051" path="res://audio/sfx/grow.mp3" id="3_n2kgl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oumlv"]
+size = Vector2(40, 16)
+
+[node name="growthpotion" type="Area2D"]
+script = ExtResource("1_vfrrn")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_x4280")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 24)
+shape = SubResource("RectangleShape2D_oumlv")
+
+[node name="body" type="StaticBody2D" parent="."]
+
+[node name="collision" type="CollisionPolygon2D" parent="body"]
+build_mode = 1
+polygon = PackedVector2Array(-48, 48, -48, 40, -28, 0, -28, -48, -20, -48, -20, 8, -36, 40, 36, 40, 20, 8, 20, -48, 28, -48, 28, 0, 48, 40, 48, 48)
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_n2kgl")
+bus = &"sfx"
+
+[connection signal="body_entered" from="." to="." method="_body_entered"]

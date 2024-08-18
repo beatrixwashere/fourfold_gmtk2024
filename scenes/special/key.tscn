@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://d00eew1ufm7yu"]
+
+[ext_resource type="Script" path="res://scripts/special/special_key.gd" id="1_mvuv2"]
+[ext_resource type="Texture2D" uid="uid://d4kvax4fn7n0f" path="res://images/special/key.png" id="2_c4qsv"]
+[ext_resource type="AudioStream" uid="uid://d3qvmkdje7aro" path="res://audio/sfx/key.mp3" id="3_5wcvr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jt6vm"]
+size = Vector2(96, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n0lcw"]
+size = Vector2(104, 56)
+
+[node name="key" type="Area2D"]
+script = ExtResource("1_mvuv2")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_c4qsv")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jt6vm")
+
+[node name="body" type="StaticBody2D" parent="."]
+
+[node name="collision" type="CollisionShape2D" parent="body"]
+shape = SubResource("RectangleShape2D_n0lcw")
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_5wcvr")
+bus = &"sfx"
+
+[connection signal="body_entered" from="." to="." method="_body_entered"]

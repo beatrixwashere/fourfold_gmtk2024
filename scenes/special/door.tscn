@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bl3rcitbwqja8"]
+
+[ext_resource type="Script" path="res://scripts/special/special_door.gd" id="1_0gbub"]
+[ext_resource type="Texture2D" uid="uid://sak11bd4hphj" path="res://images/special/door.png" id="1_785fg"]
+[ext_resource type="AudioStream" uid="uid://c4vwwbdsm2vq6" path="res://audio/sfx/door.mp3" id="3_s8tm0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_03rpt"]
+size = Vector2(48, 64)
+
+[node name="door" type="Area2D"]
+texture_filter = 1
+script = ExtResource("1_0gbub")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_785fg")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_03rpt")
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_s8tm0")
+bus = &"sfx"
+
+[connection signal="body_entered" from="." to="." method="_body_entered"]
+[connection signal="body_exited" from="." to="." method="_body_exited"]
