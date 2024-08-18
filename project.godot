@@ -19,6 +19,10 @@ boot_splash/image="res://images/lotusprotocol.png"
 config/icon="res://icon.svg"
 boot_splash/minimum_display_time=1000
 
+[autoload]
+
+music="*res://scenes/music.tscn"
+
 [display]
 
 window/size/viewport_width=480

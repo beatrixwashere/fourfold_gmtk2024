@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2o1oymv68jjn"]
+
+[ext_resource type="AudioStream" uid="uid://btr73xtm1vr2b" path="res://audio/fourfold_menu.mp3" id="1_cdib4"]
+[ext_resource type="AudioStream" uid="uid://bi8gd34p5rv5n" path="res://audio/fourfold_tutorial.mp3" id="2_rlmv4"]
+[ext_resource type="AudioStream" uid="uid://cludrjfpl4xmm" path="res://audio/fourfold_ingame.mp3" id="3_48jxs"]
+[ext_resource type="Script" path="res://scripts/game/game_music.gd" id="4_l8gao"]
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_kyedx"]
+stream_count = 3
+stream_0/stream = ExtResource("1_cdib4")
+stream_0/volume = 0.0
+stream_1/stream = ExtResource("2_rlmv4")
+stream_1/volume = -60.0
+stream_2/stream = ExtResource("3_48jxs")
+stream_2/volume = -60.0
+
+[node name="music" type="AudioStreamPlayer"]
+stream = SubResource("AudioStreamSynchronized_kyedx")
+autoplay = true
+bus = &"music"
+script = ExtResource("4_l8gao")
