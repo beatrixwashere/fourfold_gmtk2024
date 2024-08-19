@@ -17,6 +17,17 @@ func _ready() -> void:
 		if sfx_volume > 0: AudioServer.set_bus_volume_db(1, 6 * log(sfx_volume / 10.0) / log(2))
 		AudioServer.set_bus_mute(1, sfx_volume == 0)
 		$sfx/slider.value = sfx_volume
+	if sequence.floornum > 0:
+		get_tree().current_scene.get_node("player").position = \
+		get_tree().current_scene.get_node("markers/gameover_playerpos").position
+		get_tree().current_scene.get_node("camera").position = \
+		get_tree().current_scene.get_node("markers/gameover_camerapos").position
+		get_tree().current_scene.get_node("labels/gameover/floor").text = \
+		"[wave amp=30.0 freq=3.0 connected=1][center]final floor: " + str(sequence.floornum) + "[/center][/wave]"
+		get_tree().current_scene.get_node("labels/gameover/rooms").text = \
+		"[wave amp=30.0 freq=3.0 connected=1][center]rooms cleared: " + str(sequence.roomclears) + "[/center][/wave]"
+		sequence.floornum = 0
+		sequence.roomclears = 0
 # change bus volume from slider and save to file
 func change_bus_volume(value: float, idx: int) -> void:
 	if value > 0: AudioServer.set_bus_volume_db(idx, 6 * log(value / 10.0) / log(2))
