@@ -22,6 +22,8 @@ boot_splash/minimum_display_time=1000
 [autoload]
 
 music="*res://scenes/music.tscn"
+transitions="*res://scenes/transitions.tscn"
+sequence="*res://scripts/game/game_sequence.gd"
 
 [display]
 
