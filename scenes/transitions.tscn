@@ -1,0 +1,263 @@
+[gd_scene load_steps=11 format=4 uid="uid://lp3edxdykod2"]
+
+[ext_resource type="TileSet" uid="uid://brial8myoctm2" path="res://images/tileset.tres" id="1_3anwi"]
+[ext_resource type="Script" path="res://scenes/ui_transitions.gd" id="1_hjjur"]
+[ext_resource type="FontFile" uid="uid://dvj208w51fakp" path="res://images/fonts/pixelfysans_bold.ttf" id="2_tudgt"]
+[ext_resource type="Texture2D" uid="uid://dlnxfbmh7envg" path="res://images/transitions/head.png" id="3_3r5tx"]
+[ext_resource type="Texture2D" uid="uid://sak11bd4hphj" path="res://images/special/door.png" id="4_j45e4"]
+
+[sub_resource type="Animation" id="Animation_qh1dc"]
+resource_name = "tutorial"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("tutorial/sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(32, 160), Vector2(240, 160)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("tutorial/sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1vx8m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("tutorial/sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(32, 160)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("tutorial/sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("newroom/sprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("newroom/sprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(128, 160)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("newfloor/sprite:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(240, 240)]
+}
+
+[sub_resource type="Animation" id="Animation_yynrq"]
+resource_name = "newroom"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("newroom/sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6, 1),
+"transitions": PackedFloat32Array(2, 1, 0.5, 1),
+"update": 0,
+"values": [Vector2(128, 160), Vector2(176, 160), Vector2(240, 96), Vector2(352, 96)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("newroom/sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.9, 1),
+"transitions": PackedFloat32Array(0.5, 1, 0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_t6sub"]
+resource_name = "newfloor"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("newfloor/sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector2(240, 240), Vector2(240, 160)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("newfloor/sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7ot24"]
+_data = {
+"RESET": SubResource("Animation_1vx8m"),
+"newfloor": SubResource("Animation_t6sub"),
+"newroom": SubResource("Animation_yynrq"),
+"tutorial": SubResource("Animation_qh1dc")
+}
+
+[node name="transitions" type="CanvasLayer"]
+layer = 2
+script = ExtResource("1_hjjur")
+
+[node name="tutorial" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+
+[node name="tiles" type="TileMapLayer" parent="tutorial"]
+modulate = Color(0, 0.501961, 1, 1)
+tile_map_data = PackedByteArray("AAACAAwAAAAAAAAAAAAEAAwAAAAAAAAAAAAGAAwAAAAAAAAAAAAHAAwAAAAAAAAAAAAIAAwAAAAAAAAAAAAJAAwAAAAAAAAAAAAKAAwAAAAAAAAAAAALAAwAAAAAAAAAAAAMAAwAAAAAAAAAAAANAAwAAAAAAAAAAAAOAAwAAAAAAAAAAAAPAAwAAAAAAAAAAAAQAAwAAAAAAAAAAAARAAwAAAAAAAAAAAASAAwAAAAAAAAAAAATAAwAAAAAAAAAAAAUAAwAAAAAAAAAAAAVAAwAAAAAAAAAAAAWAAwAAAAAAAAAAAAXAAwAAAAAAAAAAAAZAAwAAAAAAAAAAAAbAAwAAAAAAAAAAAA=")
+tile_set = ExtResource("1_3anwi")
+collision_enabled = false
+
+[node name="outline" type="TileMapLayer" parent="tutorial"]
+modulate = Color(0, 0.501961, 1, 1)
+tile_map_data = PackedByteArray("AAAGAAwAAAABAAAAAAAHAAwAAAABAAAAAAAIAAwAAAABAAAAAAAJAAwAAAABAAAAAAAKAAwAAAABAAAAAAALAAwAAAABAAAAAAAMAAwAAAABAAAAAAACAAwAAAABAAAAAAAEAAwAAAABAAAAAAANAAwAAAABAAAAAAAOAAwAAAABAAAAAAAPAAwAAAABAAAAAAAQAAwAAAABAAAAAAARAAwAAAABAAAAAAASAAwAAAABAAAAAAATAAwAAAABAAAAAAAUAAwAAAABAAAAAAAVAAwAAAABAAAAAAAWAAwAAAABAAAAAAAXAAwAAAABAAAAAAAZAAwAAAABAAAAAAAbAAwAAAABAAAAAAA=")
+tile_set = ExtResource("1_3anwi")
+
+[node name="label" type="RichTextLabel" parent="tutorial"]
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 416.0
+offset_bottom = 128.0
+theme_override_colors/font_outline_color = Color(0.501961, 0.501961, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = ExtResource("2_tudgt")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[center]tutorial[/center]"
+
+[node name="sprite" type="Sprite2D" parent="tutorial"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(32, 160)
+texture = ExtResource("3_3r5tx")
+
+[node name="newroom" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+
+[node name="tiles" type="TileMapLayer" parent="newroom"]
+modulate = Color(0, 0.501961, 1, 1)
+tile_map_data = PackedByteArray("AAAGAAwAAAAAAAAAAAAHAAwAAAAAAAAAAAAIAAwAAAAAAAAAAAAJAAwAAAAAAAAAAAAKAAwAAAAAAAAAAAALAAwAAAAAAAAAAAAMAAwAAAAAAAAAAAASAAgAAAAAAAAAAAATAAgAAAAAAAAAAAAUAAgAAAAAAAAAAAAVAAgAAAAAAAAAAAAWAAgAAAAAAAAAAAAXAAgAAAAAAAAAAAANAAsAAAAAAAAAAAAOAAoAAAAAAAAAAAAPAAkAAAAAAAAAAAAQAAgAAAAAAAAAAAARAAgAAAAAAAAAAAANAAwAAAAAAAAAAAAOAAsAAAAAAAAAAAAPAAoAAAAAAAAAAAAQAAkAAAAAAAAAAAA=")
+tile_set = ExtResource("1_3anwi")
+collision_enabled = false
+
+[node name="outline" type="TileMapLayer" parent="newroom"]
+modulate = Color(0, 0.501961, 1, 1)
+tile_map_data = PackedByteArray("AAAGAAwAAAABAAAAAAAHAAwAAAABAAAAAAAIAAwAAAABAAAAAAAJAAwAAAABAAAAAAAKAAwAAAABAAAAAAALAAwAAAABAAAAAAAMAAwAAAABAAAAAAARAAgAAAABAAAAAAASAAgAAAABAAAAAAATAAgAAAABAAAAAAAUAAgAAAABAAAAAAAVAAgAAAABAAAAAAAWAAgAAAABAAAAAAAXAAgAAAABAAAAAAANAAsAAAABAAEAAAAOAAoAAAABAAEAAAAPAAkAAAABAAEAAAAQAAgAAAABAAEAAAANAAwAAAABAAIAAAAOAAsAAAABAAIAAAAPAAoAAAABAAIAAAAQAAkAAAABAAIAAAA=")
+tile_set = ExtResource("1_3anwi")
+
+[node name="d0" type="Sprite2D" parent="newroom"]
+position = Vector2(128, 160)
+texture = ExtResource("4_j45e4")
+
+[node name="d1" type="Sprite2D" parent="newroom"]
+position = Vector2(352, 96)
+texture = ExtResource("4_j45e4")
+
+[node name="sprite" type="Sprite2D" parent="newroom"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(128, 160)
+texture = ExtResource("3_3r5tx")
+
+[node name="newfloor" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+
+[node name="tiles" type="TileMapLayer" parent="newfloor"]
+modulate = Color(0, 0.501961, 1, 1)
+tile_map_data = PackedByteArray("AAACAAwAAAAAAAAAAAAEAAwAAAAAAAAAAAAGAAwAAAAAAAAAAAAHAAwAAAAAAAAAAAAIAAwAAAAAAAAAAAAJAAwAAAAAAAAAAAAKAAwAAAAAAAAAAAALAAwAAAAAAAAAAAAMAAwAAAAAAAAAAAANAAwAAAAAAAAAAAAOAAwAAAAAAAAAAAAPAAwAAAAAAAAAAAAQAAwAAAAAAAAAAAARAAwAAAAAAAAAAAASAAwAAAAAAAAAAAATAAwAAAAAAAAAAAAUAAwAAAAAAAAAAAAVAAwAAAAAAAAAAAAWAAwAAAAAAAAAAAAXAAwAAAAAAAAAAAAZAAwAAAAAAAAAAAAbAAwAAAAAAAAAAAA=")
+tile_set = ExtResource("1_3anwi")
+collision_enabled = false
+
+[node name="outline" type="TileMapLayer" parent="newfloor"]
+modulate = Color(0, 0.501961, 1, 1)
+tile_map_data = PackedByteArray("AAAGAAwAAAABAAAAAAAHAAwAAAABAAAAAAAIAAwAAAABAAAAAAAJAAwAAAABAAAAAAAKAAwAAAABAAAAAAALAAwAAAABAAAAAAAMAAwAAAABAAAAAAACAAwAAAABAAAAAAAEAAwAAAABAAAAAAANAAwAAAABAAAAAAAOAAwAAAABAAAAAAAPAAwAAAABAAAAAAAQAAwAAAABAAAAAAARAAwAAAABAAAAAAASAAwAAAABAAAAAAATAAwAAAABAAAAAAAUAAwAAAABAAAAAAAVAAwAAAABAAAAAAAWAAwAAAABAAAAAAAXAAwAAAABAAAAAAAZAAwAAAABAAAAAAAbAAwAAAABAAAAAAA=")
+tile_set = ExtResource("1_3anwi")
+
+[node name="label" type="RichTextLabel" parent="newfloor"]
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 416.0
+offset_bottom = 128.0
+theme_override_colors/font_outline_color = Color(0.501961, 0.501961, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = ExtResource("2_tudgt")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[center]floor N[/center]"
+
+[node name="sprite" type="Sprite2D" parent="newfloor"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(240, 240)
+texture = ExtResource("3_3r5tx")
+
+[node name="animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7ot24")
+}
