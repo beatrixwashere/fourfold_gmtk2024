@@ -31,7 +31,7 @@ tile_map_data = PackedByteArray("AADc/wIAAAABAAAAAADd/wIAAAABAAAAAADe/wIAAAABAAA
 tile_set = ExtResource("1_vopid")
 rendering_quadrant_size = 32
 
-[node name="door" parent="." instance=ExtResource("10_0q2kx")]
+[node name="floor" parent="." instance=ExtResource("10_0q2kx")]
 position = Vector2(-416, -96)
 scale = Vector2(4, 4)
 
