@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://iydqxgw7nbf0"]
+
+[ext_resource type="Script" path="res://scripts/game/game_timer.gd" id="1_tcg88"]
+[ext_resource type="FontFile" uid="uid://dvj208w51fakp" path="res://images/fonts/pixelfysans_bold.ttf" id="2_dpryx"]
+
+[node name="timer" type="CanvasLayer"]
+script = ExtResource("1_tcg88")
+
+[node name="f" type="Control" parent="."]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = 240.0
+offset_top = 24.0
+offset_right = 240.0
+offset_bottom = 24.0
+
+[node name="label" type="RichTextLabel" parent="f"]
+offset_left = -80.0
+offset_top = -20.0
+offset_right = 80.0
+offset_bottom = 20.0
+theme_override_colors/font_outline_color = Color(0.501961, 0.501961, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = ExtResource("2_dpryx")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center]30[/center]"
