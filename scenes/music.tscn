@@ -19,3 +19,6 @@ stream = SubResource("AudioStreamSynchronized_kyedx")
 autoplay = true
 bus = &"music"
 script = ExtResource("4_l8gao")
+
+[node name="ingame" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_48jxs")
