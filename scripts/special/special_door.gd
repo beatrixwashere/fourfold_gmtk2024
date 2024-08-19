@@ -16,11 +16,24 @@ func _ready() -> void:
 # option selection
 func _input(event: InputEvent) -> void:
 	if active && event is InputEventKey && event.keycode == KEY_SPACE:
+		active = false
 		match name:
+			"floor":
+				player.can_update = false
+				$sfx.play()
+				await player.get_node("door_enter").fade_out()
+				sequence.new_floor()
+			"next":
+				player.can_update = false
+				$sfx.play()
+				await player.get_node("door_enter").fade_out()
+				sequence.next_room()
 			"play":
 				player.can_update = false
 				$sfx.play()
 				await player.get_node("door_enter").fade_out()
+				transitions.start_transition("tutorial")
+				await get_tree().create_timer(2.0).timeout
 				get_tree().change_scene_to_file("res://scenes/rooms/tutorial.tscn")
 				music.change_smooth(0, 1)
 			"settings":
@@ -39,7 +52,6 @@ func _input(event: InputEvent) -> void:
 				# if quit doesn't get called for whatever reason
 				player.get_node("door_enter").fade_in()
 				player.can_update = true
-		active = false
 # helper function for going through menu doors
 func door_helper(room: String) -> void:
 	player.can_update = false
