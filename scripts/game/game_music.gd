@@ -4,6 +4,8 @@
 extends AudioStreamPlayer
 func _ready() -> void:
 	volume_db = -60
+	AudioServer.set_bus_mute(0, false)
+	await get_tree().create_timer(0.1).timeout
 	var tween:Tween = create_tween()
 	tween.tween_property(self, "volume_db", 0, 1.5)
 func change_smooth(from: int, to: int) -> void:
@@ -19,6 +21,7 @@ func play_ingame() -> void:
 func stop_ingame() -> void:
 	await create_tween().tween_property($ingame, "volume_db", -60, 2.0).finished
 	$ingame.stop()
+	$ingame.volume_db = 0
 	stream.set_sync_stream_volume(0, 0)
 	stream.set_sync_stream_volume(1, -60)
 	create_tween().tween_property(self, "volume_db", 0, 1.0)
