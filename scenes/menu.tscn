@@ -39,16 +39,18 @@ rendering_quadrant_size = 32
 position = Vector2(128, 208)
 
 [node name="settings" parent="doors/main" instance=ExtResource("2_esqp1")]
-position = Vector2(192, 208)
+position = Vector2(216, 208)
 
 [node name="credits" parent="doors/main" instance=ExtResource("2_esqp1")]
-position = Vector2(256, 208)
+position = Vector2(304, 208)
 
 [node name="extras" parent="doors/main" instance=ExtResource("2_esqp1")]
+visible = false
 position = Vector2(320, 208)
+monitoring = false
 
 [node name="exit" parent="doors/main" instance=ExtResource("2_esqp1")]
-position = Vector2(384, 208)
+position = Vector2(392, 208)
 
 [node name="settings" type="Node2D" parent="doors"]
 
@@ -94,19 +96,18 @@ bbcode_enabled = true
 text = "[wave amp=30.0 freq=3.0 connected=1][center]fourfold[/center][/wave]"
 
 [node name="author" type="RichTextLabel" parent="labels/main"]
-visible = false
 layout_mode = 0
-offset_left = 144.0
+offset_left = 32.0
 offset_top = 112.0
-offset_right = 336.0
+offset_right = 448.0
 offset_bottom = 144.0
-theme_override_colors/default_color = Color(0.627451, 0, 0.627451, 1)
-theme_override_colors/font_outline_color = Color(0.25098, 0, 0.25098, 1)
+theme_override_colors/default_color = Color(0.752941, 0, 0.752941, 1)
+theme_override_colors/font_outline_color = Color(0.376471, 0, 0.376471, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/normal_font = ExtResource("2_oh352")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "[wave amp=30.0 freq=3.0 connected=1][center]by lotus protocol[/center][/wave]"
+text = "[wave amp=30.0 freq=3.0 connected=1][center]made in 96 hours for gmtk[/center][/wave]"
 
 [node name="doors" type="Control" parent="labels/main"]
 anchors_preset = 0
@@ -127,9 +128,9 @@ text = "[wave amp=15.0 freq=5.0 connected=1][center]play[/center][/wave]"
 
 [node name="settings" type="RichTextLabel" parent="labels/main/doors"]
 layout_mode = 0
-offset_left = 160.0
+offset_left = 184.0
 offset_top = 160.0
-offset_right = 224.0
+offset_right = 248.0
 offset_bottom = 176.0
 theme_override_colors/font_outline_color = Color(0.501961, 0.501961, 1, 1)
 theme_override_constants/outline_size = 5
@@ -140,9 +141,9 @@ text = "[wave amp=15.0 freq=5.0 connected=1][center]settings[/center][/wave]"
 
 [node name="credits" type="RichTextLabel" parent="labels/main/doors"]
 layout_mode = 0
-offset_left = 224.0
+offset_left = 272.0
 offset_top = 160.0
-offset_right = 288.0
+offset_right = 336.0
 offset_bottom = 176.0
 theme_override_colors/font_outline_color = Color(0.501961, 0.501961, 1, 1)
 theme_override_constants/outline_size = 5
@@ -152,6 +153,7 @@ bbcode_enabled = true
 text = "[wave amp=15.0 freq=5.0 connected=1][center]credits[/center][/wave]"
 
 [node name="extras" type="RichTextLabel" parent="labels/main/doors"]
+visible = false
 layout_mode = 0
 offset_left = 288.0
 offset_top = 160.0
@@ -166,9 +168,9 @@ text = "[wave amp=15.0 freq=5.0 connected=1][center]extras[/center][/wave]"
 
 [node name="exit" type="RichTextLabel" parent="labels/main/doors"]
 layout_mode = 0
-offset_left = 352.0
+offset_left = 360.0
 offset_top = 160.0
-offset_right = 416.0
+offset_right = 424.0
 offset_bottom = 176.0
 theme_override_colors/font_outline_color = Color(0.501961, 0.501961, 1, 1)
 theme_override_constants/outline_size = 5
@@ -176,6 +178,19 @@ theme_override_fonts/normal_font = ExtResource("2_oh352")
 theme_override_font_sizes/normal_font_size = 10
 bbcode_enabled = true
 text = "[wave amp=15.0 freq=5.0 connected=1][center]exit[/center][/wave]"
+
+[node name="return" type="RichTextLabel" parent="labels/main"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 248.0
+offset_right = 464.0
+offset_bottom = 264.0
+theme_override_colors/font_outline_color = Color(0.501961, 0.501961, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("2_oh352")
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "[wave amp=15.0 freq=5.0 connected=1][center](wasd/arrows to move and space to enter a door)[/center][/wave]"
 
 [node name="settings" type="Control" parent="labels"]
 anchors_preset = 0
@@ -257,19 +272,21 @@ anchors_preset = 0
 
 [node name="lotus_protocol" type="RichTextLabel" parent="labels/credits"]
 layout_mode = 0
-offset_left = 64.0
+offset_left = 32.0
 offset_top = 336.0
-offset_right = 384.0
+offset_right = 448.0
 offset_bottom = 432.0
 theme_override_colors/default_color = Color(0.752941, 0, 0.752941, 1)
 theme_override_colors/font_outline_color = Color(0.376471, 0, 0.376471, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/normal_font = ExtResource("2_oh352")
-theme_override_font_sizes/normal_font_size = 15
+theme_override_font_sizes/normal_font_size = 10
 bbcode_enabled = true
-text = "[wave amp=30.0 freq=3.0 connected=1][center]full game, including programming, design, art, and sound, by lotus protocol
+text = "[wave amp=20.0 freq=3.0 connected=1][center]full game, including programming, design, art, and sound, by lotus protocol
 
-only non-original asset is pixelfysans from google fonts[/center][/wave]"
+only non-original asset is pixelfysans from google fonts
+
+also shoutouts to scrabcord :3[/center][/wave]"
 
 [node name="return" type="RichTextLabel" parent="labels/credits"]
 layout_mode = 0
