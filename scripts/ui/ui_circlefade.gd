@@ -4,6 +4,7 @@
 extends ColorRect
 func _ready() -> void:
 	visible = true
+	get_node("../background").visible = true
 	material.set_shader_parameter("size", 0.0)
 	await get_tree().create_timer(0.5).timeout
 	fade_in()
