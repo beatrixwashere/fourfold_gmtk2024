@@ -6,33 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://dlnxfbmh7envg" path="res://images/transitions/head.png" id="3_3r5tx"]
 [ext_resource type="Texture2D" uid="uid://sak11bd4hphj" path="res://images/special/door.png" id="4_j45e4"]
 
-[sub_resource type="Animation" id="Animation_qh1dc"]
-resource_name = "tutorial"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("tutorial/sprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [Vector2(32, 160), Vector2(240, 160)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("tutorial/sprite:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_1vx8m"]
 length = 0.001
 tracks/0/type = "value"
@@ -95,32 +68,17 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector2(240, 240)]
 }
-
-[sub_resource type="Animation" id="Animation_yynrq"]
-resource_name = "newroom"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("newroom/sprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.6, 1),
-"transitions": PackedFloat32Array(2, 1, 0.5, 1),
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("newfloor/sprite:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(128, 160), Vector2(176, 160), Vector2(240, 96), Vector2(352, 96)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("newroom/sprite:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.9, 1),
-"transitions": PackedFloat32Array(0.5, 1, 0.5, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_t6sub"]
@@ -150,6 +108,60 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_yynrq"]
+resource_name = "newroom"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("newroom/sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6, 1),
+"transitions": PackedFloat32Array(2, 1, 0.5, 1),
+"update": 0,
+"values": [Vector2(128, 160), Vector2(176, 160), Vector2(240, 96), Vector2(352, 96)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("newroom/sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.9, 1),
+"transitions": PackedFloat32Array(0.5, 1, 0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qh1dc"]
+resource_name = "tutorial"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("tutorial/sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(32, 160), Vector2(240, 160)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("tutorial/sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7ot24"]
 _data = {
 "RESET": SubResource("Animation_1vx8m"),
@@ -161,6 +173,15 @@ _data = {
 [node name="transitions" type="CanvasLayer"]
 layer = 2
 script = ExtResource("1_hjjur")
+
+[node name="loadfix" type="ColorRect" parent="."]
+visible = false
+z_as_relative = false
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 484.0
+offset_bottom = 276.0
+color = Color(0, 0, 0, 1)
 
 [node name="tutorial" type="Control" parent="."]
 visible = false
@@ -179,6 +200,7 @@ tile_map_data = PackedByteArray("AAAGAAwAAAABAAAAAAAHAAwAAAABAAAAAAAIAAwAAAABAAA
 tile_set = ExtResource("1_3anwi")
 
 [node name="label" type="RichTextLabel" parent="tutorial"]
+layout_mode = 0
 offset_left = 64.0
 offset_top = 64.0
 offset_right = 416.0
@@ -188,7 +210,7 @@ theme_override_constants/outline_size = 10
 theme_override_fonts/normal_font = ExtResource("2_tudgt")
 theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
-text = "[center]tutorial[/center]"
+text = "[center]entrance[/center]"
 
 [node name="sprite" type="Sprite2D" parent="tutorial"]
 modulate = Color(1, 1, 1, 0)
@@ -241,6 +263,7 @@ tile_map_data = PackedByteArray("AAAGAAwAAAABAAAAAAAHAAwAAAABAAAAAAAIAAwAAAABAAA
 tile_set = ExtResource("1_3anwi")
 
 [node name="label" type="RichTextLabel" parent="newfloor"]
+layout_mode = 0
 offset_left = 64.0
 offset_top = 64.0
 offset_right = 416.0
