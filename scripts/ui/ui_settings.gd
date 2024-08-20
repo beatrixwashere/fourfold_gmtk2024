@@ -28,6 +28,7 @@ func _ready() -> void:
 		"[wave amp=30.0 freq=3.0 connected=1][center]rooms cleared: " + str(sequence.roomclears) + "[/center][/wave]"
 		sequence.floornum = 0
 		sequence.roomclears = 0
+		sequence.upgrades = [0,0,0]
 # change bus volume from slider and save to file
 func change_bus_volume(value: float, idx: int) -> void:
 	if value > 0: AudioServer.set_bus_volume_db(idx, 6 * log(value / 10.0) / log(2))

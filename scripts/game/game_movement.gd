@@ -3,14 +3,14 @@
 # -----------------------
 extends CharacterBody2D
 # constants
-const MOVE_MAX_SMALL: int = 300
-const MOVE_ACC_SMALL: int = 30
-const MOVE_ACC_AIR_SMALL: int = 20
-const JUMP_INIT_SMALL: int = -400
-const JUMP_GRAV_SMALL: int = 40
-const JUMP_GRAV_LIGHT_SMALL: int = 20
+var MOVE_MAX: int = 300 + sequence.upgrades[0] * 50
+const MOVE_ACC: int = 30
+const MOVE_ACC_AIR: int = 20
+var JUMP_INIT: int = -400 + sequence.upgrades[1] * -50
+const JUMP_GRAV: int = 40
+const JUMP_GRAV_LIGHT: int = 20
 const JUMP_COYOTE: int = 10
-const DASH_POWER: int = 450
+var DASH_POWER: int = 450 + sequence.upgrades[2] * 50
 const DASH_ACC: int = 50
 const DASH_DUR: int = 20
 const DASH_CDN: int = 60
@@ -39,21 +39,32 @@ func _physics_process(_delta: float) -> void:
 			player_jump()
 		player_dash()
 		move_and_slide()
+		# animation
+		if dash_state > 0:
+			$sprite.animation = "dash"
+		elif jump_state > 0:
+			$sprite.animation = "jump"
+		elif (inputs["left"] || inputs["right"]) && is_on_floor():
+			$sprite.animation = "move"
+		else:
+			$sprite.animation = "idle"
 # basic movement
 func player_move() -> void:
 	if inputs["right"] && !inputs["left"]:
-		velocity.x = move_toward(velocity.x, MOVE_MAX_SMALL, MOVE_ACC_SMALL)
+		velocity.x = move_toward(velocity.x, MOVE_MAX, MOVE_ACC)
+		$sprite.flip_h = false
 	elif inputs["left"] && !inputs["right"]:
-		velocity.x = move_toward(velocity.x, -MOVE_MAX_SMALL, MOVE_ACC_SMALL)
+		velocity.x = move_toward(velocity.x, -MOVE_MAX, MOVE_ACC)
+		$sprite.flip_h = true
 	else:
-		velocity.x = move_toward(velocity.x, 0, MOVE_ACC_SMALL)
+		velocity.x = move_toward(velocity.x, 0, MOVE_ACC)
 	#$sfx/walk.volume_db = 0 if (inputs["left"] || inputs["right"]) && is_on_floor() else -60
 # jumping
 func player_jump() -> void:
 	# normal
 	if jump_state == 0:
 		if inputs["jump"]:
-			velocity.y = JUMP_INIT_SMALL
+			velocity.y = JUMP_INIT
 			if dash_state > 0:
 				dash_pwr += 150
 			$sfx/jump.play()
@@ -66,12 +77,12 @@ func player_jump() -> void:
 		if velocity.y == 0:
 			jump_state = 2
 		elif inputs["jump"]:
-			velocity.y += JUMP_GRAV_LIGHT_SMALL
+			velocity.y += JUMP_GRAV_LIGHT
 		else:
-			velocity.y += JUMP_GRAV_SMALL
+			velocity.y += JUMP_GRAV
 	elif jump_state == 2:
 		if inputs["jump"] && jump_coyote > 0:
-			velocity.y = JUMP_INIT_SMALL
+			velocity.y = JUMP_INIT
 			jump_coyote = 0
 			$sfx/jump.play()
 			jump_state = 1
@@ -82,7 +93,7 @@ func player_jump() -> void:
 			jump_coyote = 0
 			jump_state = 0
 		else:
-			velocity.y += JUMP_GRAV_SMALL
+			velocity.y += JUMP_GRAV
 # dashing
 func player_dash() -> void:
 	if dash_state == 0:
@@ -105,6 +116,7 @@ func player_dash() -> void:
 		velocity.x += DASH_ACC * (int(inputs["right"]) - int(inputs["left"]))
 		velocity.y += DASH_ACC * (int(inputs["down"]) - int(inputs["up"]))
 		velocity = velocity.normalized() * dash_pwr
+		$sprite.flip_h = velocity.x < 0
 	if dash_cdn > 0:
 		dash_cdn -= 1
 		$sprite/dash_cdn.value = dash_cdn
