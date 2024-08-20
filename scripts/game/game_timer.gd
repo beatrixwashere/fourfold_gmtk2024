@@ -2,11 +2,17 @@
 # handles time limit
 # -------------------
 extends CanvasLayer
-var timeleft: int = 30
+var timeleft: int = 32 - sequence.floornum * 2
 func _ready() -> void:
 	iterate_timer()
+	var labeltext: String = ""
+	if timeleft <= 10:
+		labeltext += "[shake rate=20.0 level=5 connected=1][color=red]"
+	labeltext += "[center]" + str(timeleft)
+	$f/label.text = labeltext
 func iterate_timer() -> void:
-	await get_tree().create_timer(1.0).timeout
+	$countdown.start()
+	await $countdown.timeout
 	timeleft -= 1
 	var labeltext: String = ""
 	if timeleft <= 10:

@@ -19,11 +19,21 @@ func _input(event: InputEvent) -> void:
 		active = false
 		match name:
 			"floor":
+				if get_tree().current_scene.has_node("timer"):
+					get_tree().current_scene.get_node("timer/countdown").stop()
+					get_tree().current_scene.get_node("timer").queue_free()
 				player.can_update = false
 				$sfx.play()
 				await player.get_node("door_enter").fade_out()
+				match get_parent().name:
+					"speedboost": sequence.upgrades[0] += 1
+					"jumpboost": sequence.upgrades[1] += 1
+					"dashboost": sequence.upgrades[2] += 1
 				sequence.new_floor()
 			"next":
+				if get_tree().current_scene.has_node("timer"):
+					get_tree().current_scene.get_node("timer/countdown").stop()
+					get_tree().current_scene.get_node("timer").queue_free()
 				player.can_update = false
 				$sfx.play()
 				await player.get_node("door_enter").fade_out()
@@ -34,7 +44,9 @@ func _input(event: InputEvent) -> void:
 				await player.get_node("door_enter").fade_out()
 				transitions.start_transition("tutorial")
 				await get_tree().create_timer(2.0).timeout
+				transitions.get_node("loadfix").visible = true
 				get_tree().change_scene_to_file("res://scenes/rooms/tutorial.tscn")
+				transitions.get_node("loadfix").visible = false
 				music.change_smooth(0, 1)
 			"settings":
 				door_helper("settings")
@@ -50,6 +62,7 @@ func _input(event: InputEvent) -> void:
 				await player.get_node("door_enter").fade_out()
 				get_tree().quit()
 				# if quit doesn't get called for whatever reason
+				await get_tree().create_timer(1.0).timeout
 				player.get_node("door_enter").fade_in()
 				player.can_update = true
 # helper function for going through menu doors
