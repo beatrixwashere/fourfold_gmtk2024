@@ -10,13 +10,14 @@ config_version=5
 
 [application]
 
-config/name="gmtk2024"
+config/name="fourfold"
+config/version="1.0.0"
 run/main_scene="res://scenes/menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 run/max_fps=60
 boot_splash/bg_color=Color(0.12549, 0, 0.12549, 1)
 boot_splash/image="res://images/lotusprotocol.png"
-config/icon="res://icon.svg"
+config/icon="res://images/transitions/head.png"
 boot_splash/minimum_display_time=1000
 
 [autoload]
@@ -47,3 +48,4 @@ folder_colors={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
