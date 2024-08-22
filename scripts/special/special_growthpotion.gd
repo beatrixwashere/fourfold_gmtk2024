@@ -5,6 +5,7 @@ extends Area2D
 func _body_entered(body: Node2D) -> void:
 	if body.name == "player":
 		$sfx.play()
+		$collect.emitting = true
 		$collision.call_deferred("set_disabled", true)
 		$body/collision.call_deferred("set_disabled", true)
 		get_node("../key/body/collision").call_deferred("set_disabled", true)

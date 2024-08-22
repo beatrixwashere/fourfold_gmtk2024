@@ -1,14 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://broito75fru0g"]
+[gd_scene load_steps=8 format=3 uid="uid://broito75fru0g"]
 
 [ext_resource type="Texture2D" uid="uid://d5qtlfuihflj" path="res://images/special/crackedblock.png" id="1_bo78r"]
 [ext_resource type="Script" path="res://scripts/special/special_crackedblock.gd" id="1_fdwlp"]
 [ext_resource type="AudioStream" uid="uid://cyq80gwbcd3ja" path="res://audio/sfx/break.mp3" id="3_na7a2"]
+[ext_resource type="Texture2D" uid="uid://dw82i0rwlofoa" path="res://images/particle.png" id="4_ihfou"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4m7s8"]
 size = Vector2(18, 208)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vaf46"]
 size = Vector2(16, 208)
+
+[sub_resource type="Gradient" id="Gradient_60nys"]
+colors = PackedColorArray(0.752941, 0.627451, 0.501961, 1, 1, 1, 1, 0)
 
 [node name="crackedblock" type="Area2D"]
 script = ExtResource("1_fdwlp")
@@ -28,5 +32,24 @@ shape = SubResource("RectangleShape2D_vaf46")
 [node name="sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_na7a2")
 bus = &"sfx"
+
+[node name="break" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 24
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 0.25
+texture = ExtResource("4_ihfou")
+emission_shape = 3
+emission_rect_extents = Vector2(8, 104)
+direction = Vector2(0, 1)
+spread = 30.0
+gravity = Vector2(0, 64)
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+scale_amount_min = 0.5
+scale_amount_max = 0.7
+color = Color(0.752941, 0.627451, 0.501961, 1)
+color_ramp = SubResource("Gradient_60nys")
 
 [connection signal="body_entered" from="." to="." method="_body_entered"]

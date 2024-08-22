@@ -8,8 +8,9 @@ func _body_entered(body: Node2D) -> void:
 		$sfx.play()
 		$collision.call_deferred("set_disabled", true)
 		await get_tree().create_timer(0.25).timeout
+		$break.emitting = true
 		$body/collision.disabled = true
 		var tween: Tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 		tween.tween_property(self, "modulate", Color(1,1,1,0), 0.5)
-		await tween.finished
+		await get_tree().create_timer(1.0).timeout
 		queue_free()

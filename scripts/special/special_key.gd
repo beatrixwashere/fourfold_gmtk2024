@@ -5,6 +5,7 @@ extends Area2D
 func _body_entered(body: Node2D) -> void:
 	if body.name == "player":
 		$sfx.play()
+		$collect.emitting = true
 		$collision.call_deferred("set_disabled", true)
 		get_node("../gate/collision").call_deferred("set_disabled", true)
 		create_tween().tween_property(self, "modulate", Color(1,1,1,0), 0.5)

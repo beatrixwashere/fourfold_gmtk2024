@@ -1,14 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://d00eew1ufm7yu"]
+[gd_scene load_steps=8 format=3 uid="uid://d00eew1ufm7yu"]
 
 [ext_resource type="Script" path="res://scripts/special/special_key.gd" id="1_mvuv2"]
 [ext_resource type="Texture2D" uid="uid://d4kvax4fn7n0f" path="res://images/special/key.png" id="2_c4qsv"]
 [ext_resource type="AudioStream" uid="uid://d3qvmkdje7aro" path="res://audio/sfx/key.mp3" id="3_5wcvr"]
+[ext_resource type="Texture2D" uid="uid://dw82i0rwlofoa" path="res://images/particle.png" id="4_psypp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jt6vm"]
 size = Vector2(96, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n0lcw"]
 size = Vector2(104, 56)
+
+[sub_resource type="Gradient" id="Gradient_42krg"]
+colors = PackedColorArray(1, 1, 0, 1, 1, 1, 1, 0)
 
 [node name="key" type="Area2D"]
 script = ExtResource("1_mvuv2")
@@ -28,5 +32,23 @@ shape = SubResource("RectangleShape2D_n0lcw")
 [node name="sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_5wcvr")
 bus = &"sfx"
+
+[node name="collect" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 16
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("4_psypp")
+direction = Vector2(0, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+orbit_velocity_min = 1.0
+orbit_velocity_max = 1.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+color = Color(1, 1, 0, 1)
+color_ramp = SubResource("Gradient_42krg")
 
 [connection signal="body_entered" from="." to="." method="_body_entered"]

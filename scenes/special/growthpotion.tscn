@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://fvxapc2fmwyp"]
+[gd_scene load_steps=7 format=3 uid="uid://fvxapc2fmwyp"]
 
 [ext_resource type="Script" path="res://scripts/special/special_growthpotion.gd" id="1_vfrrn"]
 [ext_resource type="Texture2D" uid="uid://c3jm3ph7u35y7" path="res://images/special/growthpotion.png" id="1_x4280"]
 [ext_resource type="AudioStream" uid="uid://p6u1invoc051" path="res://audio/sfx/grow.mp3" id="3_n2kgl"]
+[ext_resource type="Texture2D" uid="uid://dw82i0rwlofoa" path="res://images/particle.png" id="4_6pmop"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oumlv"]
 size = Vector2(40, 16)
+
+[sub_resource type="Gradient" id="Gradient_px0ka"]
+colors = PackedColorArray(0, 1, 0, 1, 1, 1, 1, 0)
 
 [node name="growthpotion" type="Area2D"]
 script = ExtResource("1_vfrrn")
@@ -27,5 +31,23 @@ polygon = PackedVector2Array(-48, 48, -48, 40, -28, 0, -28, -48, -20, -48, -20, 
 [node name="sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_n2kgl")
 bus = &"sfx"
+
+[node name="collect" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 16
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("4_6pmop")
+direction = Vector2(0, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+orbit_velocity_min = 1.0
+orbit_velocity_max = 1.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+color = Color(0, 1, 0, 1)
+color_ramp = SubResource("Gradient_px0ka")
 
 [connection signal="body_entered" from="." to="." method="_body_entered"]

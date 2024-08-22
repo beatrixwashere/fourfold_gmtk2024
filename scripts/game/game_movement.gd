@@ -42,12 +42,20 @@ func _physics_process(_delta: float) -> void:
 		# animation
 		if dash_state > 0:
 			$sprite.animation = "dash"
+			$sprite/particles/move.emitting = false
+			$sprite/particles/dash.emitting = true
 		elif jump_state > 0:
 			$sprite.animation = "jump"
+			$sprite/particles/move.emitting = false
+			$sprite/particles/dash.emitting = false
 		elif (inputs["left"] || inputs["right"]) && is_on_floor():
 			$sprite.animation = "move"
+			$sprite/particles/move.emitting = true
+			$sprite/particles/dash.emitting = false
 		else:
 			$sprite.animation = "idle"
+			$sprite/particles/move.emitting = false
+			$sprite/particles/dash.emitting = false
 # basic movement
 func player_move() -> void:
 	if inputs["right"] && !inputs["left"]:
@@ -68,6 +76,8 @@ func player_jump() -> void:
 			if dash_state > 0:
 				dash_pwr += 150
 			$sfx/jump.play()
+			$sprite/particles/jump.restart()
+			$sprite/particles/jump.emitting = true
 			jump_state = 1
 		if !is_on_floor():
 			jump_coyote = JUMP_COYOTE
@@ -85,6 +95,8 @@ func player_jump() -> void:
 			velocity.y = JUMP_INIT
 			jump_coyote = 0
 			$sfx/jump.play()
+			$sprite/particles/jump.restart()
+			$sprite/particles/jump.emitting = true
 			jump_state = 1
 		elif jump_coyote > 0:
 			jump_coyote -= 1
@@ -107,6 +119,7 @@ func player_dash() -> void:
 			dash_cdn = DASH_CDN
 			dash_pwr = DASH_POWER
 			$sfx/dash.play()
+			$sprite/particles/dash.restart()
 			dash_state = 1
 	elif dash_state == 1:
 		if dash_frame == 0:
